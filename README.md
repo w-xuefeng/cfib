@@ -93,10 +93,13 @@ cfib random output.jpg --type img --origin "https://example.com"
 
 ## 🤖 关于 AI Agent Skills
 
-在项目的 `skills/` 文件夹下包含了可以直接被 AI Agent（例如 Claude, AutoGPT 工具链）解析吸收的能力配置清单（`SKILL.md`）。
+在项目的 `skills/` 文件夹下包含了可以直接被 AI Agent（例如 Cline, OpenClaw 等工具链）解析吸收的能力配置清单（`SKILL.md`）。
 
-这些说明文档内置了完整的调用说明，AI 助手在读取这些配置后便能安全、无障碍地为你执行上述所列的图床业务。
+该说明文档（`skills/cfib-cli/SKILL.md`）内置了完整的指令和规则说明。AI 助手在读取这些配置后便能安全、无障碍地为你执行上述所列的所有图床业务（文件上传、移除和随机获取）。
 
-- `skills/upload/SKILL.md`
-- `skills/remove/SKILL.md`
-- `skills/random/SKILL.md`
+除此之外对于 AI 智能体系的自身优化，还加入了：
+- **动态帮助查询**：要求 Agent 主动执行 `cfib --help` 获取最即时的各类参数说明与最新用法规范。
+- **凭据集成提取**：内置提取启发，引导 AI 在缺失必须参数时，可以主动调用同生态的 `local-diamond` 配置中心（例如 `bunx lod get cfib/origin`）一键提取对应环境变量组，从而达成更高程度的自治运行。
+
+只需让你的 Agent 引入或者加载以下核心 Skill 解析说明，即可解锁 CFIB 图床管理的全部功能：
+- `skills/cfib-cli/SKILL.md`
