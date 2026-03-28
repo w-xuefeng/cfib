@@ -1,0 +1,23 @@
+{
+  "name": "@w-xuefeng/cfib",
+  "description": "cloudflare-image-bed CLI tools and Agent Skills",
+  "version": "0.0.1",
+  "module": "src/index.ts",
+  "type": "module",
+  "bin": {
+    "cfib": "src/index.ts"
+  },
+  "scripts": {
+    "test": "bun test/index.test.ts"
+  },
+  "devDependencies": {
+    "@types/bun": "latest",
+    "local-diamond": "^0.0.3"
+  },
+  "peerDependencies": {
+    "typescript": "^5"
+  },
+  "dependencies": {
+    "@w-xuefeng/bkit": "^0.0.5"
+  }
+}
