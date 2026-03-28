@@ -1,6 +1,7 @@
 #!/usr/bin/env bun
 
 import { parseArgs } from "node:util";
+import pkg from "../package.json";
 import { Context, initEvn, logger } from "./utils";
 import {
   type IBRandomOptions,
@@ -46,10 +47,16 @@ async function main() {
       orientation: { type: "string" },
 
       help: { type: "boolean", short: "h" },
+      version: { type: "boolean", short: "v" },
     },
     strict: false,
     allowPositionals: true,
   });
+
+  if (values.version) {
+    console.log(`v${pkg.version}`);
+    process.exit(0);
+  }
 
   if (values.help || positionals.length === 0) {
     console.log(`
@@ -61,6 +68,7 @@ Commands:
   random [dest]     (Optional [dest]) Get a random image and save it to [dest] if --type is img
 
 Global Options:
+  -v, --version              Show version
   --origin <url>             (Required) Set IB_ORIGIN
   --log <true|false>         Set IB_LOG
   --runtime-path <path>      Set IB_RUNTIME_PATH

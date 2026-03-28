@@ -1,4 +1,5 @@
 import { Logger, pathJoin } from "@w-xuefeng/bkit";
+import os from "os";
 
 interface IBEnv {
   IB_ORIGIN: string;
@@ -10,10 +11,10 @@ interface IBEnv {
   IB_UPLOAD_AUTH_CODE: string;
 }
 
-const IB_RUNTIME_PATH = Bun.env.IB_RUNTIME_PATH || "runtime";
-const IB_LOG_ROOT = Bun.env.IB_LOG_ROOT || "logs";
-
 const getLogConfig = () => {
+  const IB_RUNTIME_PATH = Bun.env.IB_RUNTIME_PATH ||
+    pathJoin(os.homedir(), ".cfib");
+  const IB_LOG_ROOT = Bun.env.IB_LOG_ROOT || "logs";
   return {
     enabled: Bun.env.IB_LOG === "true",
     type: "both" as const,
